@@ -9,4 +9,8 @@ DBMS_OUTPUT.PUT_LINE('Welcome to PLSQL Course');
 DBMS_OUTPUT.PUT_LINE(orderid);
 DBMS_OUTPUT.PUT_LINE(ordernumber);
 DBMS_OUTPUT.PUT_LINE(customername);
+
+/* This is multiline comments
+We can write multiline comment
+*/
 END; 
