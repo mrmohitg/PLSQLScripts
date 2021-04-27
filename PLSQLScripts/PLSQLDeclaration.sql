@@ -1,0 +1,5 @@
+DECLARE 
+
+BEGIN
+DBMS_OUTPUT.PUT_LINE('Welcome to PLSQL Course');
+END;
