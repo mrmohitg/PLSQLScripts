@@ -1,0 +1,1 @@
+execute customerpackage.get_customer(10);
