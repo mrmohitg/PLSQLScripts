@@ -1,0 +1,37 @@
+CREATE OR REPLACE FUNCTION get_names
+(
+custid IN NUMBER
+)
+RETURN SYS_REFCURSOR
+IS
+l_return SYS_REFCURSOR;
+BEGIN
+
+OPEN l_return FOR
+SELECT first_name,last_name 
+FROM customer 
+WHERE customer_id = custid;
+RETURN l_return;
+END get_names;
+
+CREATE OR REPLACE PROCEDURE DISPLAY_NAMES
+IS
+c_rec SYS_REFCURSOR;
+FNAME VARCHAR2(50);
+LNAME VARCHAR2(50);
+
+BEGIN
+c_rec := get_names(13);
+
+LOOP
+FETCH c_rec INTO FNAME, LNAME;
+EXIT WHEN c_rec%notfound;
+
+DBMS_OUTPUT.PUT_LINE(FNAME);
+DBMS_OUTPUT.PUT_LINE(LNAME);
+END LOOP;
+
+CLOSE c_rec;
+END;
+
+execute DISPLAY_NAMES();
