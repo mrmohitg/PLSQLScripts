@@ -1,0 +1,18 @@
+CREATE TABLE JOB_RESUMES2
+(
+resume_id NUMBER,
+first_name VARCHAR2(10),
+last_name VARCHAR2(10),
+resumes BFILE
+);
+
+CREATE OR REPLACE DIRECTORY MYIMAGES AS 'C:\Users\Mohit\Downloads\Photos';
+
+
+
+
+INSERT INTO JOB_RESUMES2 VALUES (1,'Mohit','Gupta',BFILENAME('MYIMAGES','Manju.jpg'));
+
+
+
+SELECT * from JOB_RESUMES2;
