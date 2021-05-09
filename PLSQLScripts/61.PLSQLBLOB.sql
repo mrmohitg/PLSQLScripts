@@ -1,0 +1,27 @@
+CREATE TABLE JOB_RESUMES1
+(
+resume_id NUMBER,
+first_name VARCHAR2(10),
+last_name VARCHAR2(10),
+resumes BLOB
+);
+
+CREATE OR REPLACE DIRECTORY MYIMAGES AS 'C:\Users\Mohit\Downloads\Photos';
+
+DECLARE
+src BFILE := BFILENAME('MYIMAGES','Manju.jpg');
+dest BLOB;
+
+BEGIN
+
+INSERT INTO JOB_RESUMES1 VALUES (1,'Manju','Gupta',EMPTY_BLOB())
+RETURNING resumes INTO dest;
+
+DBMS_LOB.OPEN(src, DBMS_LOB.LOB_READONLY);
+DBMS_LOB.LoadFromFile(dest,src,DBMS_LOB.GETLENGTH(src));
+DBMS_LOB.CLOSE(src);
+
+COMMIT;
+END;
+
+SELECT * from JOB_RESUMES1;
