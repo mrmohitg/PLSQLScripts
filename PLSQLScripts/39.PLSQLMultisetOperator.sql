@@ -11,4 +11,18 @@ DBMS_OUTPUT.PUT_LINE(l_tab1(i));
 
 END LOOP;
 
+l_tab1 := l_tab1 MULTISET EXCEPT l_tab2;
+FOR i IN l_tab1.first .. l_tab1.last LOOP
+
+DBMS_OUTPUT.PUT_LINE(l_tab1(i));
+
+END LOOP;
+
+l_tab1 := l_tab1 MULTISET INTERSECT l_tab2;
+FOR i IN l_tab1.first .. l_tab1.last LOOP
+
+DBMS_OUTPUT.PUT_LINE(l_tab1(i));
+
+END LOOP;
+
 END;
